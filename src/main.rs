@@ -1,18 +1,26 @@
-// Simple rust code to check if a number is even or odd
+// Simple rust code to calculate the nth fibonacci number 
+// Questions:
+// How to make sure that rust accepts a number from the terminal which is u32
+
 
 use std::io;
 
-fn check_if_even(value: i32) -> bool {
-    let remainder = value % 2;
-    if remainder == 0 {
-        true
-    } else {
-        false
+fn nth_fibonacci_number(value: u64) -> u64 {
+    if value <= 1 { value } else {
+        let mut first: u64 = 0;
+        let mut second: u64 = 1;
+        let mut fibonacci: u64 = 0;
+        for _number in 2..value {
+            fibonacci = first + second;
+            first = second;
+            second = fibonacci;
+        }
+        return fibonacci
     }
 }
 
 fn main() {
-    println!("Please input a number to check if it is even or odd!");
+    println!("Please input the number for which the the nth Fibonacci is desired");
     loop {
         let mut number = String::new();
         io::stdin()
@@ -26,13 +34,14 @@ fn main() {
         if number == 0 {
             println!("Okay quitting!");
             break;
-        }
-        let even = check_if_even(number);
-        if even {
-            println!("The number {number} is even");
+        } else if number <= 0 {
+            println!("This does not make sense provide a number greater than 0.");
+            continue;
         } else {
-            println!("The number {number} is odd");
-        }
+            let value: u64 = number as u64; // explicit conversion between types
+            let answer: u64 = nth_fibonacci_number(value);
+            println!("The answer is {answer}");
+        };
 
     }
     
