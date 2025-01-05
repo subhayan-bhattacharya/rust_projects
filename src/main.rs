@@ -1,22 +1,19 @@
-// the sum of all multiples of 3 or 5 below a given number 
+// Write a function that calculates the sum of all prime numbers below a given number 
 
 
 use std::io;
 
-fn is_a_multiple_of_three_or_five(number: u32) -> bool {
-    let remainder_3 = number % 3;
-    let remainder_5 = number % 5;
-    if remainder_3 == 0 {
-        true
-    } else if remainder_5 == 0 {
-        true
-    } else {
-        false
+fn is_number_prime(number: u32) -> bool {
+    for num in 2..number {
+        if number % num == 0 {
+            return false;
+        }
     }
+    true
 }
 
 fn main() {
-    println!("Please input the under which multiples of 3 or 5 needs to be added!");
+    println!("Please input the under which we need sum of primes!");
     loop {
         let mut number = String::new();
         io::stdin()
@@ -36,8 +33,8 @@ fn main() {
         } else {
             let value: u32 = number as u32; // explicit conversion between types
             let mut answer: u32 = 0;
-            for num in 1..value {
-                if is_a_multiple_of_three_or_five(num) {
+            for num in 2..value {
+                if is_number_prime(num) {
                     answer = answer + num;
                 }
             }
