@@ -1,5 +1,6 @@
 // building structs in Rust
 
+#[derive(Debug)]
 struct Rectangle {
     length: u32,
     width: u32
@@ -20,4 +21,5 @@ fn main() {
     let new_length = dimensions.length;
     println!("The area is {area}");
     println!("Accessing original struct field {new_length}");
+    println!("Displaying the fields of original struct : {dimensions:?}")
 }
