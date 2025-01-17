@@ -1,11 +1,20 @@
 // building structs in Rust
-fn calculate_area(dimensions: (u32, u32)) -> u32 {
-    dimensions.0 * dimensions.1
+
+struct Rectangle {
+    length: u32,
+    width: u32
+}
+
+fn calculate_area(dimensions: &Rectangle) -> u32 {
+    dimensions.length * dimensions.width
 }
 
 fn main() {
     println!("practising rust struct !");
-    let dimensions = (50, 30);
-    let area = calculate_area(dimensions);
+    let dimensions = Rectangle{
+        length: 30,
+        width: 50
+    };
+    let area = calculate_area(&dimensions);
     println!("The area is {area}");
 }
