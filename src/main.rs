@@ -1,16 +1,12 @@
-// Understanding scopes in Rust 
-
-
-use std::io;
-
-fn take_ownership_string(passed: String) {
-    print("I have taken ownership of the string {passed}!");
+// building structs in Rust
+fn calculate_area(length: u32, width: u32) -> u32 {
+    length * width
 }
 
 fn main() {
-    println!("Understanding scopes!");
-    let name: String = String::from("Subhayan");
-    take_ownership_string(name);
-    // The below should not work
-    println!("Can i still access the original variable called name ? {name}")
+    println!("practising rust struct !");
+    let length = 30;
+    let width = 50;
+    let area = calculate_area(length, width);
+    println!("The area is {area}");
 }
