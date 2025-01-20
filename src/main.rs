@@ -5,21 +5,27 @@ struct Rectangle {
     length: u32,
     width: u32
 }
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.length * self.width
+    }
+}
 
-fn calculate_area(dimensions: &mut Rectangle) -> u32 {
-    dimensions.length = dimensions.length * 5;
-    dimensions.length * dimensions.width
+impl Rectangle {
+    fn area_increased(&self) -> u32 {
+        self.length * self.width * 10
+    }
 }
 
 fn main() {
     println!("practising rust struct !");
-    let mut dimensions = Rectangle{
+    let dimensions = Rectangle{
         length: 30,
         width: 50
     };
-    let area = calculate_area(&mut dimensions);
-    let new_length = dimensions.length;
+    let area = dimensions.area();
     println!("The area is {area}");
-    println!("Accessing original struct field {new_length}");
-    println!("Displaying the fields of original struct : {dimensions:?}")
+    println!("Displaying the fields of original struct : {dimensions:#?}");
+    let new_area = dimensions.area_increased();
+    println!("What is the changed area calculation {new_area}");
 }
