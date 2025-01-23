@@ -13,6 +13,13 @@ impl Rectangle {
     fn can_hold(&self, rectangle: &Rectangle) -> bool {
         self.length > rectangle.length && self.width > rectangle.width
     }
+
+    fn square(size: u32) -> Self {
+        Rectangle {
+            width: size,
+            length: size
+        }
+    }
 }
 
 fn main() {
@@ -33,4 +40,6 @@ fn main() {
     } else {
         println!("This rectangle {dimensions2:#?} is bigger");
     }
+    let new = Rectangle::square(30);
+    println!("the square is of size : {new:#?}");
 }
