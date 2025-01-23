@@ -9,11 +9,9 @@ impl Rectangle {
     fn area(&self) -> u32 {
         self.length * self.width
     }
-}
 
-impl Rectangle {
-    fn area_increased(&self) -> u32 {
-        self.length * self.width * 10
+    fn can_hold(&self, rectangle: &Rectangle) -> bool {
+        self.length > rectangle.length && self.width > rectangle.width
     }
 }
 
@@ -25,7 +23,14 @@ fn main() {
     };
     let area = dimensions.area();
     println!("The area is {area}");
-    println!("Displaying the fields of original struct : {dimensions:#?}");
-    let new_area = dimensions.area_increased();
-    println!("What is the changed area calculation {new_area}");
+    let dimensions2 = Rectangle {
+        length: 80,
+        width: 90
+    };
+    let ans = dimensions.can_hold(&dimensions2);
+    if ans {
+        println!("the rectangle {dimensions:#?} can hold the other rectange {ans}");
+    } else {
+        println!("This rectangle {dimensions2:#?} is bigger");
+    }
 }
